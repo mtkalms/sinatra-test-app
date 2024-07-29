@@ -10,3 +10,4 @@ gem 'activerecord', "6.1.7.1"
 gem 'rack-test', '1.1.0'
 gem 'rack', '2.2.8.1'
 gem 'rake', '13.0.1'
+gem 'thin', '1.8.2'
