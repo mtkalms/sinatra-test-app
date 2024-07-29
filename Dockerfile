@@ -5,6 +5,7 @@ ARG RUBY_BUNDLER=2.1.2
 FROM ubuntu:${UBUNTU_VERSION}
 
 ARG RUBY_VERSION
+ARG RUBY_BUNDLER
 
 RUN apt update && apt-get install openssl curl -y 
 RUN curl -L https://get.rvm.io | bash -s stable
