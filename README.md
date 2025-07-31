@@ -38,3 +38,10 @@ To run the app in a console so you can inspect records or create new ones:
     # => SQL log: commit transaction
     # => #<Blog id: 705406077, name: "Rob Rants", tagline: nil> 
     > 
+
+
+To run the frontend:
+
+    cd client
+    npm run dev
+    
