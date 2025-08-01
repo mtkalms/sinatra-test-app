@@ -1,29 +1,8 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import useFetch from '../hooks/useFetch';
 
 function BlogListPage() {
-  const [data, setData] = useState<Blog[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:4567/blogs');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        setError(error as any);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []); // Empty dependency array ensures it runs only once on mount
+  const {data, loading, error} = useFetch<Blog[]>(`http://localhost:4567/blogs`);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {(error as any).message}</div>;
@@ -32,7 +11,7 @@ function BlogListPage() {
     <div>
       <h1>Blogs</h1>
       <ul>
-        {data.map(blog => 
+        {data?.map(blog => 
           <Link to={`/blogs/${blog.id}`}><li>{blog.name} - {blog.name}</li></Link>
         )}
       </ul>
