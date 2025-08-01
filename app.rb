@@ -8,6 +8,8 @@ before do
   content_type :json
 end
 
+set :protection, :except => :frame_options
+
 get '/' do
   p 'Hello!'
 end
