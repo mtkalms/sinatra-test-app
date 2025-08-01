@@ -12,7 +12,7 @@ function BlogListPage() {
       <h1>Blogs</h1>
       <ul>
         {data?.map(blog => 
-          <Link to={`/blogs/${blog.id}`}><li>{blog.name} - {blog.name}</li></Link>
+          <Link to={`/blogs/${blog.id}/view`}><li>{blog.name} - {blog.name}</li></Link>
         )}
       </ul>
     </div>

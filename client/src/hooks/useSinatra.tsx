@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function useFetch<T>(
+export default function useSinatra(
   url: string
 ): { 
-  data?: T | null; 
+  data?: string | null; 
   loading: boolean; 
   error?: Error | null 
 } {
-  const [data, setData] = useState<T | null>(null);
+  const [data, setData] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -18,7 +18,7 @@ export default function useFetch<T>(
         if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-        const result = await response.json();
+        const result = await response.text();
         setData(result);
       } catch (error) {
           setError(error as any);

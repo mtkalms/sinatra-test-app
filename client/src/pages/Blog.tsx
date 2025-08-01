@@ -16,7 +16,7 @@ function BlogListPage() {
       <h3>Posts</h3>
       <ul>
         {posts?.map(post => 
-          <Link to={`/blogs/${blog?.id}/posts/${post.id}`} key={post.id}>
+          <Link to={`/blogs/${blog?.id}/posts/${post.id}/view`} key={post.id}>
             <li key={post.id}>
               {post.headline}
             </li>
