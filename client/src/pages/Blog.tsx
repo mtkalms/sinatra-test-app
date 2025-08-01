@@ -10,7 +10,7 @@ function BlogListPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5678/blogs/${params.id}`);
+        const response = await fetch(`http://localhost:4567/blogs/${params.id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
