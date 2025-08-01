@@ -10,7 +10,7 @@ post '/blogs' do
   ) 
   if @blog.save
     status 201
-    redirect "/blogs/#{@blog.id}/view"
+    redirect request.referrer + "/blogs/#{@blog.id}/view"
   else
     status 422
     { error: 'Failed to create blog' }.to_json

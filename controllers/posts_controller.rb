@@ -12,7 +12,7 @@ post '/blogs/:blog_id/posts' do
   )
   if @post.save
     status 201
-    redirect "/blogs/#{params[:blog_id]}/posts/#{@post.id}/view"
+    redirect request.referrer + "/blogs/#{params[:blog_id]}/posts/#{@post.id}/view"
   else
     status 422
     { error: 'Failed to create post' }.to_json
