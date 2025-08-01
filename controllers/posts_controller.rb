@@ -1,3 +1,5 @@
+require 'uri'
+
 get '/blogs/:blog_id/posts' do
   blog = Blog.find_by_id(params[:blog_id])
   @posts = blog.posts
@@ -12,7 +14,11 @@ post '/blogs/:blog_id/posts' do
   )
   if @post.save
     status 201
-    redirect request.referrer + "/blogs/#{params[:blog_id]}/posts/#{@post.id}/view"
+    puts request.referrer
+    referrer_uri = URI.parse(request.referrer)
+    referrer_base = "#{referrer_uri.scheme}://#{referrer_uri.host}"
+    referrer_base += ":#{referrer_uri.port}" if referrer_uri.port
+    redirect referrer_base + "/blogs/#{params[:blog_id]}/posts/#{@post.id}/view"
   else
     status 422
     { error: 'Failed to create post' }.to_json
