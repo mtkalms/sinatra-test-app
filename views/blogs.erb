@@ -1,0 +1,9 @@
+<h1>Blogs<h1>
+<a href="/blogs/new">
+    <input type="submit" value="Add Blog" />
+</a>
+<ul>
+    <% @blogs.each do |blog| %>
+        <li><a href="/blogs/<%= blog.id %>/view"><%= blog.name %></a></li>
+    <% end %>
+</ul>

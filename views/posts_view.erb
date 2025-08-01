@@ -1,0 +1,4 @@
+<a href="/blogs/<%=@blog.id%>/posts/view">Back to Posts</a>
+<h1><%= @post.headline %></h1>
+<p><%= @post.body_text || "No content" %></p>
+<p>Blog: <a href="/blogs/<%= @blog.id%>/view"><%= @blog.name %></a></p>

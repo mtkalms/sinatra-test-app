@@ -1,0 +1,10 @@
+<a href="/blogs/<%=@blog.id%>/view">Back to Blog</a>
+<h1>Posts in <%= @blog.name%><h1>
+<a href="/posts/new">
+    <input type="submit" value="Add Post" />
+</a>
+<ul>
+    <% @posts.each do |post| %>
+        <li><a href="/posts/<%= post.id %>/view"><%= post.headline %></a></li>
+    <% end %>
+</ul>
