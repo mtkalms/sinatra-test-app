@@ -8,5 +8,5 @@ type Post = {
     id: integer
     blog_id: integer
     headline: string
-    text: string
+    body_text: string
 }
