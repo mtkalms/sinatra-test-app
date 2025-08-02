@@ -1,0 +1,12 @@
+.github
+.vscode
+node_modules/
+dist/
+package-lock.json
+package.json
+vite.config.ts
+eslint.config.js
+src/components/ui/
+README.md
+components.json
+tsconfig.app.json
