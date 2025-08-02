@@ -10,7 +10,7 @@ post '/blogs/:blog_id/posts' do
   @post = Post.create(
     blog_id: params[:blog_id],
     headline: params[:headline],
-    body_text: params[:body_text],  
+    body_text: params[:body_text]
   )
   if @post.save
     status 201
@@ -33,9 +33,7 @@ end
 get '/posts/:id/view' do
   content_type :html
   @post = Post.find_by_id(params[:id])
-  if @post.nil?
-    halt 404, { error: 'Post not found' }.to_json
-  end
+  halt 404, { error: 'Post not found' }.to_json if @post.nil?
   @blog = Blog.find_by_id(@post.blog_id)
   erb :posts_view
 end
@@ -50,9 +48,7 @@ end
 get '/blogs/:blog_id/posts/:id/view' do
   content_type :html
   @post = Post.find_by_id(params[:id])
-  if @post.nil? or @post.blog_id != params[:blog_id].to_i
-    halt 404, { error: 'Post not found in this blog' }.to_json
-  end
+  halt 404, { error: 'Post not found in this blog' }.to_json if @post.nil? or @post.blog_id != params[:blog_id].to_i
   @blog = Blog.find_by_id(@post.blog_id)
   erb :posts_view
 end

@@ -5,9 +5,9 @@ end
 
 post '/blogs' do
   @blog = Blog.create(
-    name: params[:name], 
+    name: params[:name],
     tagline: params[:tagline]
-  ) 
+  )
   if @blog.save
     status 201
     puts request.referrer
