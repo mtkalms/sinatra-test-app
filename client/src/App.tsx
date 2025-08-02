@@ -1,15 +1,14 @@
-import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router'
-import ReactContent from './components/react-content'
-import Blog from './pages/blog'
-import BlogListPage from './pages/blog-list'
-import SinatraPage from './pages/sinatra'
-import HomePage from './pages/home'
-import { ThemeProvider } from './components/theme-provider'
-import Layout from './layout'
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router";
+import ReactContent from "./components/react-content";
+import Blog from "./pages/blog";
+import BlogListPage from "./pages/blog-list";
+import SinatraPage from "./pages/sinatra";
+import HomePage from "./pages/home";
+import { ThemeProvider } from "./components/theme-provider";
+import Layout from "./layout";
 
 function App() {
-
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <BrowserRouter>
@@ -21,13 +20,12 @@ function App() {
               <Route path="/blogs/:id" element={<Blog />} />
               <Route path="/blogs/:id/view" element={<Blog />} />
             </Route>
-            <Route path="/*" element={<SinatraPage />}>
-            </Route>
+            <Route path="/*" element={<SinatraPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

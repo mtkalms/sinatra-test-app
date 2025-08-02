@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 
-export default function useSinatra(
-  url: string
-): { 
-  data?: string | null; 
-  loading: boolean; 
-  error?: Error | null 
+export default function useSinatra(url: string): {
+  data?: string | null;
+  loading: boolean;
+  error?: Error | null;
 } {
   const [data, setData] = useState<string>("");
   const [loading, setLoading] = useState(true);
@@ -16,14 +14,14 @@ export default function useSinatra(
       try {
         const response = await fetch(url);
         if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const result = await response.text();
         setData(result);
       } catch (error) {
-          setError(error as any);
+        setError(error as any);
       } finally {
-          setLoading(false);
+        setLoading(false);
       }
     };
     fetchData();

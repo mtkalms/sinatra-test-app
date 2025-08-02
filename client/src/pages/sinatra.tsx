@@ -4,16 +4,28 @@ import { Gem } from "lucide-react";
 
 export default function SinatraPage() {
   const location = useLocation();
-  const {data, loading, error} = useSinatra('http://localhost:4567' + location.pathname);
+  const { data, loading, error } = useSinatra(
+    "http://localhost:4567" + location.pathname,
+  );
 
-
-  console.log(data)
+  console.log(data);
   return (
     <div>
-      <div className="bg-red-500 text-white p-2 flex align-middle gap-2"><Gem width={15}/> Ruby + Sinatra</div>
+      <div className="flex gap-2 bg-red-500 p-2 align-middle text-white">
+        <Gem width={15} /> Ruby + Sinatra
+      </div>
       {loading && <div>Loading...</div>}
       {error && <div>Error: {(error as any).message}</div>}
-      {data && <div dangerouslySetInnerHTML={{__html: data?.replace("action=\"", "action=\"http://localhost:4567") as string}} />}
+      {data && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data?.replace(
+              'action="',
+              'action="http://localhost:4567',
+            ) as string,
+          }}
+        />
+      )}
     </div>
   );
 }

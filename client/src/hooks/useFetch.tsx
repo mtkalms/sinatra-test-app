@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 
-export default function useFetch<T>(
-  url: string
-): { 
-  data?: T | null; 
-  loading: boolean; 
-  error?: Error | null 
+export default function useFetch<T>(url: string): {
+  data?: T | null;
+  loading: boolean;
+  error?: Error | null;
 } {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
@@ -16,14 +14,14 @@ export default function useFetch<T>(
       try {
         const response = await fetch(url);
         if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const result = await response.json();
         setData(result);
       } catch (error) {
-          setError(error as any);
+        setError(error as any);
       } finally {
-          setLoading(false);
+        setLoading(false);
       }
     };
     fetchData();
