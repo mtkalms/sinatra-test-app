@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 import {
   Sidebar,
   SidebarContent,
@@ -23,7 +23,7 @@ export default function Layout() {
               <SidebarMenuItem>
                 <SidebarMenuButton>
                   <BookText />
-                  <a href="/blogs">Blogs</a>
+                  <Link to="/blogs">Blogs</Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -34,9 +34,9 @@ export default function Layout() {
             <div className="flex items-center gap-2">
               <SidebarTrigger />
               <Separator orientation="vertical" className="mr-2" />
-              <a href="/">
+              <Link to="/">
                 <h1>Blog Application</h1>
-              </a>
+              </Link>
             </div>
             <ModeToggle />
           </header>
