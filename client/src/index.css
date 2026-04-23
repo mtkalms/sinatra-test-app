@@ -115,6 +115,59 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background! text-foreground!;
   }
+}
+
+.ui.pushable {
+  min-height: 100vh !important; 
+  border: none !important;
+  border-radius: none !important;
+}
+
+.ui.pushable.flex-sidebar-container {
+  display: flex !important;
+  flex-direction: row !important;
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+.ui.pushable.flex-sidebar-container > .ui.sidebar {
+  width: 210px !important;
+  position: relative !important;
+  visibility: visible !important; 
+  transition: transform 0.5s , width 0.5s, margin-left 0.5s !important;
+  display: block !important;
+}
+
+.ui.pushable.flex-sidebar-container > .ui.sidebar:not(.visible) {
+  width: 0 !important;
+  min-width: 0 !important;
+  transform: translate3d(-100%, 0, 0) !important;
+  margin: 0 !important;
+  .sidebar-menu {
+    transform: translate3d(-100%, 0, 0) !important;
+  }
+}
+
+.ui.pushable.flex-sidebar-container > .pusher {
+  flex: 1 !important;
+  width: auto !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: width 0.5s, flex 0.5s !important; 
+  overflow-y: auto !important;
+}
+
+.content {
+  min-height: 100vh;
+  padding: 0px !important;
+  & > .menu {
+    margin: 0px;
+  }
+}
+
+.sidebar-menu {
+  min-height: 100% !important;
+  min-width: 100% !important;
+  transition: transform 0.5s !important;
 }

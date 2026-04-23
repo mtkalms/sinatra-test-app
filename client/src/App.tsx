@@ -7,6 +7,7 @@ import SinatraPage from "./pages/sinatra";
 import HomePage from "./pages/home";
 import { ThemeProvider } from "./components/theme-provider";
 import Layout from "./layout";
+import "semantic-ui-css/semantic.min.css";
 
 function App() {
   return (

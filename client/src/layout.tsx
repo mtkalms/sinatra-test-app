@@ -1,33 +1,37 @@
-import { Link, Outlet } from "react-router";
+import { useState } from "react";
 import {
   Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
-} from "./components/ui/sidebar";
-import { Separator } from "@radix-ui/react-separator";
+  Segment,
+  Menu,
+  SidebarPusher,
+  Button,
+  Header,
+} from "semantic-ui-react";
+import { Link, Outlet } from "react-router";
+import { useTheme } from "./components/theme-provider";
 import { ModeToggle } from "./components/mode-toggle";
-import { BookOpen, ChevronRight } from "lucide-react";
 import useFetch from "./hooks/useFetch";
-import { Collapsible, CollapsibleTrigger } from "./components/ui/collapsible";
-import { CollapsibleContent } from "@radix-ui/react-collapsible";
+import { BookOpen } from "lucide-react";
 
 export default function Layout() {
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(false);
+  const { mode } = useTheme();
   const { data: blogs } = useFetch<Blog[]>(`http://localhost:4567/blogs`);
 
   return (
-    <div>
-      <SidebarProvider defaultOpen={false}>
-        <Sidebar>
-          <SidebarHeader>
+    <Sidebar.Pushable
+      inverted={mode == "dark"}
+      as={Segment}
+      className="flex-sidebar-container"
+    >
+      <Sidebar
+        animation="push"
+        icon="labeled"
+        visible={sidebarVisible}
+        width="thin"
+      >
+        <Menu inverted={mode == "dark"} vertical className="sidebar-menu">
+          <Menu.Header>
             <Link to="/">
               <div className="flex items-center gap-4 p-4 text-fuchsia-600">
                 <BookOpen size={45} absoluteStrokeWidth />
@@ -39,57 +43,36 @@ export default function Layout() {
                 </div>
               </div>
             </Link>
-          </SidebarHeader>
-          <SidebarContent>
-            <Collapsible
-              key={"blogs"}
-              title={"blogs"}
-              defaultOpen
-              className="group/collapsible"
-            >
-              <SidebarGroup>
-                <SidebarGroupLabel>
-                  <CollapsibleTrigger className="flex w-full justify-between align-middle text-sm">
-                    Blogs
-                    <ChevronRight
-                      size={15}
-                      className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90"
-                    />
-                  </CollapsibleTrigger>
-                </SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <CollapsibleContent>
-                    <SidebarMenu>
-                      {blogs?.map((blog) => (
-                        <SidebarMenuItem>
-                          <SidebarMenuButton>
-                            <Link to={`/blogs/${blog.id}`}>{blog.name}</Link>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                      ))}
-                    </SidebarMenu>
-                  </CollapsibleContent>
-                </SidebarGroupContent>
-              </SidebarGroup>
-            </Collapsible>
-          </SidebarContent>
-        </Sidebar>
-        <SidebarInset>
-          <header className="flex justify-between px-4 py-2">
-            <div className="flex items-center gap-2">
-              <SidebarTrigger />
-              <Separator orientation="vertical" className="mr-2" />
+          </Menu.Header>
+          {blogs?.map((blog) => (
+            <Link to={`/blogs/${blog.id}`} key={blog.id}>
+              <Menu.Item>{blog.name}</Menu.Item>
+            </Link>
+          ))}
+        </Menu>
+      </Sidebar>
+      <SidebarPusher>
+        <Segment basic inverted={mode == "dark"} className="content">
+          <Menu inverted={mode == "dark"} pointing secondary>
+            <Menu.Item>
+              <Button
+                inverted={mode == "dark"}
+                icon="bars"
+                onClick={() => setSidebarVisible((val) => !val)}
+              />
+            </Menu.Item>
+            <Menu.Item>
               <Link to="/">
-                <h1>Blog Application</h1>
+                <Header inverted={mode == "dark"}>Blog Application</Header>
               </Link>
-            </div>
-            <ModeToggle />
-          </header>
-          <main>
-            <Outlet />
-          </main>
-        </SidebarInset>
-      </SidebarProvider>
-    </div>
+            </Menu.Item>
+            <Menu.Item position="right">
+              <ModeToggle />
+            </Menu.Item>
+          </Menu>
+          <Outlet />
+        </Segment>
+      </SidebarPusher>
+    </Sidebar.Pushable>
   );
 }
