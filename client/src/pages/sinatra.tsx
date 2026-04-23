@@ -3,16 +3,20 @@ import useSinatra from "../hooks/useSinatra";
 import { Gem } from "lucide-react";
 import DOMPurify from "dompurify";
 import { Container } from "semantic-ui-react";
+import { useTheme } from "@/components/theme-provider";
 
 export default function SinatraPage() {
   const location = useLocation();
-  const { data, loading, error } = useSinatra(
+  const { data, error } = useSinatra(
     "http://localhost:4567" + location.pathname,
   );
 
+  const { mode } = useTheme();
+
   function sanitize(html: string): string {
     return DOMPurify.sanitize(html) // Sanitize the HTML to prevent XSS attacks
-      .replace('action="', 'action="http://localhost:4567'); // Ensure the action attribute points to the frontend server
+      .replaceAll('action="', 'action="http://localhost:4567') // Ensure the action attribute points to the frontend server
+      .replaceAll("dark-mode", mode === "dark" ? "inverted" : ""); // Inject inverted if dark mode enabled
   }
 
   return (
