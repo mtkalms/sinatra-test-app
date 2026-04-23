@@ -7,8 +7,23 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server: {
     host: '0.0.0.0',
+    watch: {
+      ignored: ['!../views/**'],
+    },
   },
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(),
+    {
+      name: 'watch-sinatra-views',
+      configureServer(server) {
+        const viewsPath = path.resolve(__dirname, '../views');
+        server.watcher.add(viewsPath);
+        server.watcher.on('change', (file) => {
+          if (file.includes('/views/')) {
+            server.ws.send({ type: 'full-reload' });
+          }
+        });
+      },
+    },],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
