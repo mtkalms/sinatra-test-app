@@ -3,7 +3,7 @@ import useSinatra from "../hooks/useSinatra";
 import { Gem } from "lucide-react";
 import DOMPurify from "dompurify";
 import { Container } from "semantic-ui-react";
-import { useTheme } from "@/components/theme-provider";
+import useTheme from "@/hooks/useTheme";
 
 export default function SinatraPage() {
   const location = useLocation();
@@ -24,7 +24,7 @@ export default function SinatraPage() {
       <div className="flex gap-2 bg-red-500 p-2 align-middle text-white">
         <Gem width={15} /> Ruby + Sinatra
       </div>
-      {error && <div>Error: {(error as any).message}</div>}
+      {error && <div>Error: {(error as Error).message}</div>}
       {data && (
         <Container>
           <div

@@ -8,7 +8,7 @@ import {
   Header,
 } from "semantic-ui-react";
 import { Link, Outlet } from "react-router";
-import { useTheme } from "./components/theme-provider";
+import useTheme from "./hooks/useTheme";
 import { ModeToggle } from "./components/mode-toggle";
 import useFetch from "./hooks/useFetch";
 import { BookOpen } from "lucide-react";

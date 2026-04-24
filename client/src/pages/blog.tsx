@@ -13,7 +13,7 @@ function BlogListPage() {
   );
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {(error as any).message}</div>;
+  if (error) return <div>Error: {(error as Error).message}</div>;
 
   return (
     <div>

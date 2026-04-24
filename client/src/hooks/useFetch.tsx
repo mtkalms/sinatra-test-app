@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function useFetch<T>(url: string): {
   data?: T | null;
@@ -9,7 +9,7 @@ export default function useFetch<T>(url: string): {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -18,18 +18,18 @@ export default function useFetch<T>(url: string): {
       const result = await response.json();
       setData(result);
     } catch (error) {
-      setError(error as any);
+      setError(error as Error);
     } finally {
       setLoading(false);
     }
-  };
+  }, [url]);
 
   function load() {
     fetchData();
   }
 
-  useEffect(load, []);
-  useEffect(load, [url]);
+  useEffect(load, [fetchData]);
+  useEffect(load, [fetchData, url]);
 
   return {
     data,
