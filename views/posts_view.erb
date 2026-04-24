@@ -1,4 +1,10 @@
-<a href="/blogs/<%=@blog.id%>/posts/view">Back to Posts</a>
-<h1><%= @post.headline %></h1>
+<div class="ui breadcrumb">
+  <a href="/blogs/<%=@blog.id%>/posts/view">
+    <div class="active section">
+      Back to Posts
+    </div>
+  </a>
+</div>
+<h1 class="ui header dark-mode"><%= @post.headline %></h1>
 <p><%= @post.body_text || "No content" %></p>
 <p>Blog: <a href="/blogs/<%= @blog.id%>/view"><%= @blog.name %></a></p>

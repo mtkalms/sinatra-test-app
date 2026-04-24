@@ -1,6 +1,9 @@
-<h1>Blogs<h1>
+<h1 class="ui header">Blogs<h1>
 <a href="/blogs/new">
-    <input type="submit" value="Add Blog" />
+  <button class="ui button green basic" type="submit">
+    <i class="check icon"></i>
+    Create Post
+  </button>
 </a>
 <ul>
     <% @blogs.each do |blog| %>

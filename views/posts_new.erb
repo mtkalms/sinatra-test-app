@@ -1,9 +1,25 @@
-<a href="/blogs/<%=@blog.id%>/posts/view">Back to Posts</a>
-<h1>Create a New Post</h1>
-<form action="<%="/blogs/#{@blog.id}/posts"%>" method="post">
-  <label for="headline">Headline:</label>
-  <input type="text" id="headline" name="headline" required>
-  <label for="body_text">Text:</label>
-  <input type="text" id="body_text" name="body_text">
-  <button type="submit">Create Post</button>
+<div class="ui breadcrumb">
+  <a href="/blogs/<%=@blog.id%>/posts/view">
+    <div class="active section">
+      Back to Posts
+    </div>
+  </a>
+</div>
+<h1 class="ui header dark-mode">
+  Create a New Post
+</h1>
+<form class="ui form dark-mode" action="<%="/blogs/#{@blog.id}/posts"%>" method="post">
+  <div class="field">
+    <label for="headline">Headline:</label>
+    <input type="text" id="headline" name="headline" required>
+  </div>
+  <div class="field">
+    <label for="body_text">Text:</label>
+    <textarea id="body_text" name="body_text"></textarea>
+  </div>
+  <button class="ui button green basic" type="submit">
+    
+  <i class="check icon"></i>
+    Create Post
+  </button>
 </form>
