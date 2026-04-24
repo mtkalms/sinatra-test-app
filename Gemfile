@@ -15,4 +15,11 @@ gem 'sqlite3', '1.4.4'
 gem 'puma', '~> 6.5'
 gem 'rackup', '~> 2.2'
 
-gem 'rubocop', '~> 1.79'
+group :development do
+  gem 'htmlbeautifier'
+  gem 'rdbg'
+  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'ruby-lsp'
+  gem 'ruby-lsp-rails'
+end

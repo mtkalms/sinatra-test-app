@@ -1,9 +1,11 @@
 {
-  "name": "active-sandbox",
-
+  "name": "ruby-sinatra-devcontainer",
   "dockerComposeFile": "../compose.yml",
   "service": "sinatra",
-  "runServices": ["sinatra", "db"],
+  "runServices": [
+    "sinatra",
+    "db"
+  ],
   "workspaceFolder": "/opt/project",
   "postCreateCommand": [
     ".devcontainer/install_dependencies.sh",
@@ -17,6 +19,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "aliariff.vscode-erb-beautify",
         "Shopify.ruby-lsp",
         "Oracle.sql-developer"
       ],
@@ -26,11 +29,12 @@
           "bash": {
             "path": "bash",
             "icon": "terminal-bash",
-            "args": ["--login"]
+            "args": [
+              "--login"
+            ]
           }
         }
       }
-
     }
   }
 }
