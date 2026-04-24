@@ -12,6 +12,20 @@
     "editor.defaultFormatter": "Shopify.ruby-lsp",
     "editor.formatOnSave": true
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "eslint.useFlatConfig": true,
+  "eslint.workingDirectories": [{ "directory": "client", "changeProcessCWD": true }],
   "rubyLsp.formatter": "rubocop",
   "vscode-erb-beautify.useBundler": true
 }
