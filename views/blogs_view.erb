@@ -5,13 +5,17 @@
     </div>
   </a>
 </div>
-<h1><%= @blog.name %><h1>
-<p><%= @blog.tagline %><p>
+<h1>
+  <%= @blog.name %>
+</h1>
+<p>
+  <%= @blog.tagline %>
+</p>
 <a href="/blogs/<%=@blog.id%>/posts/new">
-    <input type="submit" value="Add Post" />
+  <input type="submit" value="Add Post" />
 </a>
 <ul>
-    <% @posts.each do |post| %>
-        <li><a href="/posts/<%= post.id %>/view"><%= post.headline %></a></li>
-    <% end %>
+  <% @posts.each do |post| %>
+    <li><a href="/posts/<%= post.id %>/view"><%= post.headline %></a></li>
+  <% end %>
 </ul>
