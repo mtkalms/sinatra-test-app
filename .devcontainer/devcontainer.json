@@ -8,7 +8,7 @@
   ],
   "workspaceFolder": "/opt/project",
   "postCreateCommand": [
-    ".devcontainer/install_dependencies.sh",
+    ".devcontainer/install_dependencies.sh"
   ],
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:/opt/oracle/instantclient_23_8",

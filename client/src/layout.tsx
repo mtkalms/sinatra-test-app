@@ -5,18 +5,18 @@ import {
   Menu,
   SidebarPusher,
   Button,
-  Header,
 } from "semantic-ui-react";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 import useTheme from "./hooks/useTheme";
-import { ModeToggle } from "./components/mode-toggle";
 import useFetch from "./hooks/useFetch";
+import { ModeToggle } from "./components/mode-toggle";
 import { BookOpen } from "lucide-react";
 
 export default function Layout() {
   const [sidebarVisible, setSidebarVisible] = useState<boolean>(false);
   const { mode } = useTheme();
   const { data: blogs } = useFetch<Blog[]>(`http://localhost:4567/blogs`);
+  const location = useLocation();
 
   return (
     <Sidebar.Pushable
@@ -24,31 +24,39 @@ export default function Layout() {
       as={Segment}
       className="flex-sidebar-container"
     >
-      <Sidebar
-        animation="push"
-        icon="labeled"
-        visible={sidebarVisible}
-        width="thin"
-      >
+      <Sidebar animation="push" icon="labeled" visible={sidebarVisible}>
         <Menu inverted={mode == "dark"} vertical className="sidebar-menu">
           <Menu.Header>
             <Link to="/">
               <div className="flex items-center gap-4 p-4 text-fuchsia-600">
                 <BookOpen size={45} absoluteStrokeWidth />
                 <div className="flex flex-col">
-                  <h2 className="text-lg font-semibold">Blog Application</h2>
-                  <span className="-mt-1 text-sm text-fuchsia-800">
-                    # better than nothing
+                  <h2 className="text-lg font-semibold">Blog App</h2>
+                  <span className="-mt-5 text-sm text-fuchsia-800">
+                    better than nothing
                   </span>
                 </div>
               </div>
             </Link>
           </Menu.Header>
-          {blogs?.map((blog) => (
-            <Link to={`/blogs/${blog.id}`} key={blog.id}>
-              <Menu.Item>{blog.name}</Menu.Item>
-            </Link>
-          ))}
+          <Menu.Item
+            active={location.pathname.startsWith("/blogs")}
+            as={Link}
+            to="/blogs"
+          >
+            Blogs
+            <Menu.Menu>
+              {blogs?.map((blog) => (
+                <Link to={`/blogs/${blog.id}`} key={blog.id}>
+                  <Menu.Item
+                    active={location.pathname.startsWith(`/blogs/${blog.id}`)}
+                  >
+                    {blog.name}
+                  </Menu.Item>
+                </Link>
+              ))}
+            </Menu.Menu>
+          </Menu.Item>
         </Menu>
       </Sidebar>
       <SidebarPusher>
@@ -60,11 +68,6 @@ export default function Layout() {
                 icon="bars"
                 onClick={() => setSidebarVisible((val) => !val)}
               />
-            </Menu.Item>
-            <Menu.Item>
-              <Link to="/">
-                <Header inverted={mode == "dark"}>Blog Application</Header>
-              </Link>
             </Menu.Item>
             <Menu.Item position="right">
               <ModeToggle />
