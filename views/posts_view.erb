@@ -1,10 +1,47 @@
-<div class="ui breadcrumb">
-  <a href="/blogs/<%=@blog.id%>/posts/view">
-    <div class="active section">
-      Back to Posts
+<div class="ui segment dark-mode vertical basic">
+  <div class="ui breadcrumb">
+    <a href="/">
+      <div class="section">
+        <i class="home icon"></i>
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
     </div>
-  </a>
+    <a href="/blogs">
+      <div class="section">
+        Blogs
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <a href="/blogs/<%=@blog.id%>/view">
+      <div class="section">
+        <%= @blog.name %>
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <a href="/blogs/<%=@blog.id%>/posts/view">
+      <div class="section">
+        Posts
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <div class="section active">
+      <%= @post.headline %>
+    </div>
+  </div>
 </div>
-<h1 class="ui header dark-mode"><%= @post.headline %></h1>
-<p><%= @post.body_text || "No content" %></p>
-<p>Blog: <a href="/blogs/<%= @blog.id%>/view"><%= @blog.name %></a></p>
+<div class="ui grid">
+  <div class="twelve wide column">
+    <h2 class="ui header dark-mode"><%= @post.headline %></h2>
+  </div>
+</div>
+<div class="ui segment dark-mode basic vertical">
+  <p><%= @post.body_text || "No content" %></p>
+</div>

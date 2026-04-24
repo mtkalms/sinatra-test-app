@@ -1,14 +1,54 @@
-<a class="" href="/blogs/<%=@blog.id%>/view">
-  Back to Blog</a>
-<h1 class="text-2xl">Posts in <%= @blog.name%>
-</h1>
-<a href="/blogs/<%=@blog.id%>/posts/new">
-  <button class="bg-green">
-    + Add Post
-  </button>
-</a>
-<ul>
-  <% @posts.each do |post| %>
-    <li><a href="/posts/<%= post.id %>/view"><%= post.headline %></a></li>
-  <% end %>
-</ul>
+<div class="ui segment dark-mode vertical basic">
+  <div class="ui breadcrumb">
+    <a href="/">
+      <div class="section">
+        <i class="home icon"></i>
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <a href="/blogs">
+      <div class="section">
+        Blogs
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <a href="/blogs/<%=@blog.id%>/view">
+      <div class="section">
+        <%= @blog.name %>
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <div class="section active">
+      Posts
+    </div>
+  </div>
+</div>
+<div class="ui grid">
+  <div class="twelve wide column">
+    <h2 class="ui header dark-mode no-gap"><%= @blog.name%></h2>
+    <p><%= @blog.tagline %></p>
+  </div>
+  <div class="four wide column right aligned">
+    <a href="/blogs/<%=@blog.id%>/posts/new">
+      <button class="ui button green basic">
+        <i class="plus icon"></i>
+        Add Post
+      </button>
+    </a>
+  </div>
+</div>
+<div class="ui segment dark-mode piled">
+  <ul>
+    <% @posts.each do |post| %>
+      <a href="/posts/<%= post.id %>/view">
+        <li><%= post.headline %></li>
+      </a>
+    <% end %>
+  </ul>
+</div>

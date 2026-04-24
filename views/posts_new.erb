@@ -1,24 +1,62 @@
-<div class="ui breadcrumb">
-  <a href="/blogs/<%=@blog.id%>/posts/view">
-    <div class="active section">
-      Back to Posts
+<div class="ui segment dark-mode vertical basic">
+  <div class="ui breadcrumb">
+    <a href="/">
+      <div class="section">
+        <i class="home icon"></i>
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
     </div>
-  </a>
+    <a href="/blogs">
+      <div class="section">
+        Blogs
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <a href="/blogs/<%=@blog.id%>/view">
+      <div class="section">
+        <%= @blog.name %>
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <a href="/blogs/<%=@blog.id%>/posts/view">
+      <div class="section">
+        Posts
+      </div>
+    </a>
+    <div class="divider">
+      <i class="right chevron icon dark-mode"></i>
+    </div>
+    <div class="section active">
+      New Post
+    </div>
+  </div>
 </div>
-<h1 class="ui header dark-mode">
-  Create a New Post
-</h1>
-<form class="ui form dark-mode" action="<%="/blogs/#{@blog.id}/posts"%>" method="post">
-  <div class="field">
-    <label for="headline">Headline:</label>
-    <input type="text" id="headline" name="headline" required>
+<div class="ui grid">
+  <div class="twelve wide column">
+    <h2 class="ui header dark-mode">
+      Create a New Post
+    </h2>
   </div>
-  <div class="field">
-    <label for="body_text">Text:</label>
-    <textarea id="body_text" name="body_text"></textarea>
-  </div>
-  <button class="ui button green basic" type="submit">
-    <i class="check icon"></i>
-    Create Post
-  </button>
-</form>
+</div>
+<div class="ui segment dark-mode vertical basic">
+  <form class="ui form dark-mode" action="<%="/blogs/#{@blog.id}/posts"%>" method="post">
+    <div class="field">
+      <label for="headline">Headline:</label>
+      <input type="text" id="headline" name="headline" required>
+    </div>
+    <div class="field">
+      <label for="body_text">Text:</label>
+      <textarea id="body_text" name="body_text"></textarea>
+    </div>
+    <button class="ui button green basic" type="submit">
+      <i class="check icon"></i>
+      Create Post
+    </button>
+  </form>
+</div>

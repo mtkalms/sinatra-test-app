@@ -120,7 +120,7 @@
 }
 
 .ui.pushable {
-  min-height: 100vh !important; 
+  min-height: 100vh !important;
   border: none !important;
   border-radius: none !important;
 }
@@ -135,8 +135,11 @@
 .ui.pushable.flex-sidebar-container > .ui.sidebar {
   width: 210px !important;
   position: relative !important;
-  visibility: visible !important; 
-  transition: transform 0.5s , width 0.5s, margin-left 0.5s !important;
+  visibility: visible !important;
+  transition:
+    transform 0.5s,
+    width 0.5s,
+    margin-left 0.5s !important;
   display: block !important;
 }
 
@@ -154,7 +157,9 @@
   flex: 1 !important;
   width: auto !important;
   transform: translate3d(0, 0, 0) !important;
-  transition: width 0.5s, flex 0.5s !important; 
+  transition:
+    width 0.5s,
+    flex 0.5s !important;
   overflow-y: auto !important;
 }
 
@@ -170,4 +175,8 @@
   min-height: 100% !important;
   min-width: 100% !important;
   transition: transform 0.5s !important;
+}
+
+.no-gap {
+  margin: 0px !important;
 }
