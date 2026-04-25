@@ -7,6 +7,26 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server: {
     host: '0.0.0.0',
+    proxy: {
+      '/blogs': {
+        target: 'http://localhost:4567',
+        bypass(req) {
+          // Top-level browser navigations serve the React SPA; iframe loads and
+          // fetch() calls are proxied through to Sinatra.
+          if (req.headers['sec-fetch-dest'] === 'document') {
+            return '/index.html'
+          }
+        },
+      },
+      '/posts': {
+        target: 'http://localhost:4567',
+        bypass(req) {
+          if (req.headers['sec-fetch-dest'] === 'document') {
+            return '/index.html'
+          }
+        },
+      },
+    },
     watch: {
       ignored: ['!../views/**'],
     },

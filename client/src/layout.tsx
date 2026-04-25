@@ -15,7 +15,7 @@ import { BookOpen } from "lucide-react";
 export default function Layout() {
   const [sidebarVisible, setSidebarVisible] = useState<boolean>(false);
   const { mode } = useTheme();
-  const { data: blogs } = useFetch<Blog[]>(`http://localhost:4567/blogs`);
+  const { data: blogs } = useFetch<Blog[]>(`/blogs`);
   const location = useLocation();
 
   return (

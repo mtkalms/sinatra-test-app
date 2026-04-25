@@ -4,11 +4,8 @@ import { Segment, Breadcrumb, Grid, Icon } from "semantic-ui-react";
 import useTheme from "@/hooks/useTheme";
 function BlogListPage() {
   const { mode } = useTheme();
-  const { data, loading, error } = useFetch<Blog[]>(
-    `http://localhost:4567/blogs`,
-  );
+  const { data, error } = useFetch<Blog[]>(`/blogs`);
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {(error as Error).message}</div>;
 
   return (

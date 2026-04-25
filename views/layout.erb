@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= @title || "Sinatra App" %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
+    />
+    <% if params[:theme] == "dark" %>
+    <style>
+      body {
+        background-color: #1b1c1d;
+        color: #ffffff;
+      }
+      .ui.table {
+        background: #2d2d2d;
+        color: #ffffff;
+      }
+      .ui.segment {
+        background: #2d2d2d;
+        color: #ffffff;
+      }
+    </style>
+    <% end %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>

@@ -6,12 +6,8 @@ import useTheme from "@/hooks/useTheme";
 function BlogListPage() {
   const { id } = useParams();
   const { mode } = useTheme();
-  const { data: blog, error } = useFetch<Blog>(
-    `http://localhost:4567/blogs/${id}`,
-  );
-  const { data: posts } = useFetch<Post[]>(
-    `http://localhost:4567/blogs/${id}/posts`,
-  );
+  const { data: blog, error } = useFetch<Blog>(`/blogs/${id}`);
+  const { data: posts } = useFetch<Post[]>(`/blogs/${id}/posts`);
 
   if (error) return <div>Error: {(error as Error).message}</div>;
 
