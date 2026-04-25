@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 get '/blogs' do
   @blogs = Blog.all
   @blogs.to_json
@@ -10,11 +12,7 @@ post '/blogs' do
   )
   if @blog.save
     status 201
-    puts request.referrer
-    referrer_uri = URI.parse(request.referrer)
-    referrer_base = "#{referrer_uri.scheme}://#{referrer_uri.host}"
-    referrer_base += ":#{referrer_uri.port}" if referrer_uri.port
-    redirect referrer_base + "/blogs/#{@blog.id}/view"
+    redirect "/blogs/#{@blog.id}/view"
   else
     status 422
     { error: 'Failed to create blog' }.to_json
