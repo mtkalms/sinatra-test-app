@@ -9,8 +9,8 @@
     ".devcontainer/install_ruby.sh"
   ],
   "remoteEnv": {
-    "PATH": "${containerEnv:PATH}:/opt/oracle/instantclient_23_4",
-    "LD_LIBRARY_PATH": "/opt/oracle/instantclient_23_4",
+    "PATH": "${containerEnv:PATH}:/opt/oracle/instantclient_23_8",
+    "LD_LIBRARY_PATH": "/opt/oracle/instantclient_23_8",
     "TNS_ADMIN": "/opt/project/config",
     "NLS_LANG": "AMERICAN_AMERICA.AL32UTF8"
   },

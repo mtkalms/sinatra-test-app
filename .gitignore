@@ -35,3 +35,14 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# React / Node
+/client/node_modules/
+/client/.cache/
+
+# Webpack build output
+/public/js/
+
+# RuboCop cache
+/.rubocop-*.yml
+
