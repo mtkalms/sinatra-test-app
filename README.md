@@ -10,6 +10,11 @@ To run the web server:
 
     ruby app.rb
 
+To run the React frontend with webpack-dev-server and hot reloading:
+
+    FRONTEND_DEV=true ruby app.rb
+    cd client && npm run dev
+
 Then hit the server in your browser at these addresses:
 
 * [http://localhost:4567](http://localhost:4567)
@@ -17,6 +22,8 @@ Then hit the server in your browser at these addresses:
 * [http://localhost:4567/blogs/413685242](http://localhost:4567/blogs/413685242)
 * [http://localhost:4567/blogs/413685242/posts](http://localhost:4567/blogs/413685242/posts)
 * [http://localhost:4567/posts/807550412](http://localhost:4567/posts/807550412)
+
+In frontend dev mode, the HTML uses the same hostname as the Sinatra request with port `8080`, and webpack-dev-server binds to all interfaces. That avoids hard-coded `localhost` assumptions when the devcontainer is running under WSL mirrored mode.
 
 To set up the test database:
 

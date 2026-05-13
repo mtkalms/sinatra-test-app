@@ -4,12 +4,11 @@ module.exports = (env, argv) => {
   const isDev = argv.mode === 'development';
 
   return {
-    entry: './src/index.js',
+    entry: isDev ? ['./src/setPublicPath.js', './src/index.js'] : './src/index.js',
     output: {
       path: path.resolve(__dirname, '../public/js'),
       filename: 'bundle.js',
-      // In dev the bundle is served from webpack-dev-server, not from disk.
-      publicPath: isDev ? 'http://localhost:8080/' : '/js/',
+      publicPath: isDev ? '/' : '/js/',
     },
     module: {
       rules: [
@@ -24,8 +23,10 @@ module.exports = (env, argv) => {
       extensions: ['.js', '.jsx'],
     },
     devServer: {
+      host: '0.0.0.0',
       port: 8080,
       hot: true,
+      disableHostCheck: true,
       // Allow the Sinatra host to load the bundle cross-origin.
       headers: { 'Access-Control-Allow-Origin': '*' },
       // Serve static files from public/ so the dev server can also find them.

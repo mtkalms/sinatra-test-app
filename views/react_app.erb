@@ -9,7 +9,7 @@
     <div id="root"></div>
     <% if settings.frontend_dev %>
       <%# In dev mode the bundle is served by webpack-dev-server with hot reloading. %>
-      <script src="http://localhost:8080/bundle.js"></script>
+      <script src="<%= request.scheme %>://<%= request.host %>:8080/bundle.js"></script>
     <% else %>
       <script src="/js/bundle.js"></script>
     <% end %>
