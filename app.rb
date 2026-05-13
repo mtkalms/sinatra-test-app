@@ -3,9 +3,9 @@ require 'sinatra/activerecord'
 
 Dir.glob('./{models,controllers}/*.rb').each { |file| require file }
 
-# When FRONTEND_DEV=true, the react_app view loads the bundle from
-# webpack-dev-server (port 8080) for hot reloading instead of the built file.
-set :frontend_dev, ENV['FRONTEND_DEV'] == 'true'
+# In development, the react_app view loads the bundle from webpack-dev-server
+# (port 8080) for hot reloading instead of the built file.
+set :frontend_dev, settings.environment == :development
 
 before do
   content_type :json

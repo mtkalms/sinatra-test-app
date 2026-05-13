@@ -12,7 +12,7 @@ To run the web server:
 
 To run the React frontend with webpack-dev-server and hot reloading:
 
-    FRONTEND_DEV=true ruby app.rb
+    ruby app.rb
     cd client && npm run dev
 
 Then hit the server in your browser at these addresses:
