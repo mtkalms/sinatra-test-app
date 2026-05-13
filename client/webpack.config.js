@@ -26,11 +26,13 @@ module.exports = (env, argv) => {
       host: '0.0.0.0',
       port: 8080,
       hot: true,
-      disableHostCheck: true,
+      allowedHosts: 'all',
       // Allow the Sinatra host to load the bundle cross-origin.
       headers: { 'Access-Control-Allow-Origin': '*' },
       // Serve static files from public/ so the dev server can also find them.
-      contentBase: path.resolve(__dirname, '../public'),
+      static: {
+        directory: path.resolve(__dirname, '../public'),
+      },
     },
   };
 };
