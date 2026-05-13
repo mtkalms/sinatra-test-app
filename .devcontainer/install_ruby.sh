@@ -10,6 +10,8 @@ apt-get -y install \
     bash-completion \
     git \
     libaio-dev \
+    nodejs \
+    npm \
     rvm \
     unzip \
     wget
@@ -43,6 +45,10 @@ rvm install 3.3.6
 rvm rvmrc warning ignore /opt/project/Gemfile
 gem install bundler -v "2.5.23"
 bundle install
+
+cd /opt/project/client
+npm install
+cd /opt/project
 
 rake db:migrate
 rake db:dev_data
