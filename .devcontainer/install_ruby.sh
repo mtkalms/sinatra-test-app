@@ -10,6 +10,7 @@ apt-get -y install \
     bash-completion \
     git \
     libaio-dev \
+    libclang-dev \
     nodejs \
     npm \
     rvm \

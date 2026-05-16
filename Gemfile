@@ -14,3 +14,8 @@ gem 'rake', '13.2.1'
 
 gem "rackup", "~> 2.2"
 gem "puma", "~> 6.5"
+
+gem "herb", "~> 0.10.1"
+gem "actionview", "~> 7.1"
+gem "reactionview", "~> 0.3.0"
+gem "cruise", "~> 0.1.0"

@@ -20,7 +20,8 @@
     "vscode": {
       "extensions": [
         "Shopify.ruby-lsp",
-        "Oracle.sql-developer"
+        "Oracle.sql-developer",
+        "marcoroth.herb-lsp"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
