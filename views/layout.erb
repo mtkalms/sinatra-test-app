@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>My blog application</title>
+
+    <% if development? %>
+      <meta name="herb-debug-mode" content="true">
+      <meta name="herb-project-path" content="<%= settings.root %>">
+      <meta name="herb-default-editor" content="vscode">
+      <script
+        type="module"
+        src="/node_modules/@herb-tools/dev-tools/dist/herb-dev-tools.esm.js"
+      ></script>
+      <script
+        type="module"
+        src="/node_modules/@herb-tools/client/dist/herb-client.esm.js"
+      ></script>
+    <% end %>
+  </head>
+
+  <body <% if development? %><%= herb_debug_attrs('layout') %><% end %>>
+    <header>
+      <h1>Site Header</h1>
+
+      <nav>
+        <a href="/">Home</a>
+      </nav>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <p>&copy; 2026 My Website</p>
+    </footer>
+  </body>
+</html>
